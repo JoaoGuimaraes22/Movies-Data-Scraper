@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 // Middleware
-app.use("/api/test", require("./routes/api/test"));
+app.use("/api/movies", require("./routes/api/test"));
 
 // App listens
 const port = process.env.PORT || 5000;
