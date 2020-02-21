@@ -20,7 +20,6 @@ const scrapeProduct = async (url) => {
     ".Slide > .PosterContent > .Headline--eyebrow > p > .MoviePosters__released-month",
     (dat) => dat.map((date) => date.textContent)
   );
-
   await browser.close();
 
   return { movieTitles, movieImgs, releasedDates };
