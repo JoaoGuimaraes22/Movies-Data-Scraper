@@ -22,11 +22,22 @@ const scrapeProduct = async (url) => {
   );
   await browser.close();
 
-  return { movieTitles, movieImgs, releasedDates };
+  let moviesData = [];
+  for (let i = 0; i < movieTitles.length; i++) {
+    moviesData.push({
+      movieName: movieTitles[i],
+      movieImg: movieImgs[i],
+      movieDate: releasedDates[i]
+    });
+  }
+
+  return moviesData;
 };
 
 router.get("/", async (req, res, next) => {
-  const scrapedData = await scrapeProduct("https://www.amctheatres.com/movies");
+  const scrapedData = await scrapeProduct(
+    "https://www.amctheatres.com/movies?availability=COMING_SOON"
+  );
   res.send(scrapedData);
 });
 
